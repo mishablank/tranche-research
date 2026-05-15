@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yield Tranching Protocols — Five Chassis Compared</title>
-<meta name="description" content="A side-by-side comparison of five DeFi yield tranching protocols — Royco Dawn, Infinifi, Strata, Covenant, and Goldfinch V1 — analyzing loss waterfalls, yield mechanics, and insurance vault fit.">
-<meta name="keywords" content="yield tranching, DeFi, structured finance, Royco Dawn, Infinifi, Strata, Covenant, Goldfinch, senior tranche, junior tranche, loss waterfall, insurance vault, protocol comparison">
+<title>Yield Tranching Protocols – Eight Chassis Compared</title>
+<meta name="description" content="A side-by-side comparison of eight DeFi yield tranching protocols – Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 – analyzing loss waterfalls, yield mechanics, and insurance vault fit.">
+<meta name="keywords" content="yield tranching, DeFi, structured finance, Royco Dawn, Infinifi, Strata, Covenant, Knox Finance, Lotus Protocol, Mezzanine, Goldfinch, senior tranche, junior tranche, loss waterfall, insurance vault, protocol comparison">
 <meta name="author" content="Mike Blank">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://mishablank.github.io/tranche-research/">
@@ -16,22 +16,22 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yield Tranching Protocols — Five Chassis Compared">
-<meta property="og:description" content="Side-by-side analysis of Royco Dawn, Infinifi, Strata, Covenant, and Goldfinch V1 yield tranching mechanics, loss waterfalls, and insurance vault applicability.">
+<meta property="og:title" content="Yield Tranching Protocols – Eight Chassis Compared">
+<meta property="og:description" content="Side-by-side analysis of Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 yield tranching mechanics, loss waterfalls, and insurance vault applicability.">
 <meta property="og:url" content="https://mishablank.github.io/tranche-research/">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Yield Tranching Protocols — Five Chassis Compared">
-<meta name="twitter:description" content="Side-by-side analysis of Royco Dawn, Infinifi, Strata, Covenant, and Goldfinch V1 yield tranching mechanics, loss waterfalls, and insurance vault applicability.">
+<meta name="twitter:title" content="Yield Tranching Protocols – Eight Chassis Compared">
+<meta name="twitter:description" content="Side-by-side analysis of Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 yield tranching mechanics, loss waterfalls, and insurance vault applicability.">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Yield Tranching Protocols — Five Chassis Compared",
-  "description": "A side-by-side comparison of five DeFi yield tranching protocols analyzing loss waterfalls, yield mechanics, and insurance vault fit.",
+  "headline": "Yield Tranching Protocols – Eight Chassis Compared",
+  "description": "A side-by-side comparison of eight DeFi yield tranching protocols analyzing loss waterfalls, yield mechanics, and insurance vault fit.",
   "author": {
     "@type": "Person",
     "name": "Mike Blank",
@@ -81,7 +81,7 @@
   }
 
   .slide {
-    padding: 64px 80px 48px;
+    padding: 72px 80px 56px;
     border-bottom: 1px solid var(--rule);
     min-height: 720px;
     display: flex;
@@ -101,6 +101,7 @@
 
   /* HEADER */
   .top-bar {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -110,6 +111,16 @@
     text-transform: uppercase;
     margin-bottom: 56px;
   }
+  .top-bar[data-slide]::after {
+    content: attr(data-slide);
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+  }
+  .slide.dark .top-bar[data-slide]::after { color: #B5AC9D; }
 
   /* PROTOCOL BADGE */
   .protocol-badge {
@@ -182,7 +193,7 @@
     font-size: 44px;
     line-height: 1.1;
     letter-spacing: -0.015em;
-    margin: 16px 0 24px;
+    margin: 16px 0 28px;
     color: var(--ink);
   }
   h2 em { font-style: italic; }
@@ -351,6 +362,8 @@
     border-bottom: 1px solid transparent;
   }
   table.matrix a:hover { border-bottom-color: var(--accent); }
+  table.matrix tbody tr { transition: background 0.15s ease; }
+  table.matrix tbody tr:hover { background: rgba(196,74,54,0.04); }
 
   /* DEFAULT TABLE */
   table.defaults {
@@ -536,11 +549,181 @@
   .tier.junior { border-left: 3px solid var(--accent); background: var(--accent-soft); }
   .tier .tier-name { font-family: 'Fraunces', serif; font-size: 16px; }
   .tier .tier-yield { color: var(--accent); font-weight: 500; }
+  .tier { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .tier:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
   /* Body emphasis */
   strong { font-weight: 600; }
   em { font-style: italic; }
   p { margin: 0 0 12px; }
+  p, li { line-height: 1.65; }
+
+  /* GLOSSARY BAR (slide 2) */
+  .glossary-bar {
+    background: var(--accent-soft);
+    padding: 14px 22px;
+    border-left: 3px solid var(--accent);
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 16px 0 24px;
+    color: var(--ink);
+  }
+  .glossary-bar strong { font-weight: 600; color: var(--accent); }
+  .glossary-bar .sep { color: var(--rule); margin: 0 8px; }
+
+  /* MATRIX — header protocol dots, row icons, alternation, takeaway */
+  table.matrix thead th .proto-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 1px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  table.matrix tbody tr:nth-child(even) td { background: rgba(0,0,0,0.018); }
+  table.matrix tbody tr:hover td { background: rgba(196,74,54,0.05); }
+  table.matrix .tranche-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 7px;
+    vertical-align: middle;
+  }
+  table.matrix .tranche-dot.senior { background: var(--olive); }
+  table.matrix .tranche-dot.junior { background: var(--accent); }
+  table.matrix tr.matrix-takeaway td {
+    background: var(--ink) !important;
+    color: #F2EBDD;
+    font-family: 'Fraunces', serif;
+    font-size: 13.5px;
+    line-height: 1.45;
+    padding: 16px 12px;
+    border-bottom: none;
+  }
+  table.matrix tr.matrix-takeaway td:first-child {
+    color: var(--accent);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* PROOF HEADLINE — upgraded $17.9M block */
+  .proof-headline {
+    margin-top: 4px;
+  }
+  .proof-headline .battle-label {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 9px;
+    margin-bottom: 14px;
+  }
+  .proof-headline .battle-figure {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    display: inline-block;
+    border-bottom: 4px solid var(--accent);
+    padding-bottom: 4px;
+    margin-bottom: 14px;
+  }
+  .proof-headline .battle-figure .num { color: var(--accent); }
+
+  /* PRE-LAUNCH BADGE */
+  .prelaunch-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 3px 8px;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-radius: 1px;
+  }
+
+  /* ROYCO WORKED EXAMPLE — hover loss arrow */
+  table.defaults tbody tr.loss-row { position: relative; transition: background 0.2s ease; }
+  table.defaults tbody tr.loss-row:hover { background: rgba(196,74,54,0.06); }
+  table.defaults tbody tr.loss-row td:first-child { position: relative; }
+  table.defaults tbody tr.loss-row td:first-child::before {
+    content: "→";
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-12px);
+    opacity: 0;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 16px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  table.defaults tbody tr.loss-row:hover td:first-child::before {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* VISUAL STACK — before/after waterfall (slide 4) */
+  .stack-pair {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr;
+    gap: 0;
+    align-items: end;
+    margin: 16px 0 8px;
+    min-height: 220px;
+  }
+  .stack-pair .arrow {
+    align-self: center;
+    text-align: center;
+    color: var(--accent);
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4px;
+    height: 200px;
+    position: relative;
+  }
+  .stack-label {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--label);
+    font-weight: 500;
+  }
+  .stack .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    font-size: 12px;
+    font-family: 'Fraunces', serif;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .stack .bar:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .stack .bar.senior { background: var(--olive); color: #F2EBDD; }
+  .stack .bar.junior { background: var(--accent); color: #F2EBDD; }
+  .stack .bar.wiped { background: repeating-linear-gradient(45deg, var(--rule), var(--rule) 6px, #E8E0CE 6px, #E8E0CE 12px); color: var(--muted); box-shadow: none; }
+  .stack .bar .amt { font-size: 13px; font-weight: 600; }
 
   @media (max-width: 900px) {
     .slide { padding: 40px 32px; }
@@ -548,6 +731,9 @@
     h1.cover { font-size: 56px; }
     h2 { font-size: 32px; }
     .protocol-grid { grid-template-columns: 1fr; }
+    .matrix-wrap { overflow-x: auto; }
+    table.matrix { font-size: 11.5px; }
+    .two-col, .obs-grid { gap: 40px; }
   }
 </style>
 </head>
@@ -557,85 +743,241 @@
 
   <!-- ========== SLIDE 1: COVER ========== -->
   <section class="slide cover-slide">
-    <span class="label" style="color: var(--accent); margin-bottom: 18px;">Protocol Comparison Brief</span>
+    <span class="label" style="color: var(--accent); margin-bottom: 14px;">Protocol Comparison Brief · May 2026</span>
 
-    <h1 class="cover" style="font-size: 76px; white-space: nowrap;">Yield <em>tranching</em> protocols<span class="accent-dot">.</span></h1>
+    <h1 class="cover" style="font-size: 76px; margin: 12px 0 22px;">Eight chassis tranche yield.<br><em>One has scars</em><span class="accent-dot">.</span></h1>
 
-    <p class="subtitle" style="font-size: 19px; max-width: none; white-space: nowrap;">
-      Five chassis for splitting yield and loss. One read on which model fits an insurance vault.
+    <p class="subtitle" style="font-size: 19px; max-width: 920px; margin-bottom: 32px;">
+      A side-by-side of eight DeFi yield-tranching protocols. Seven untested theories. One chassis that has actually absorbed real losses on real defaults.
     </p>
 
-    <div class="cover-meta">
-      <div class="col">
-        <h4>Prepared by</h4>
-        <p><a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent);">Mike Blank</a> · May 2026</p>
-      </div>
-      <div class="col" style="text-align: right;">
-        <h4>Protocols covered</h4>
-        <p>Royco Dawn · Infinifi · Strata · Covenant · Goldfinch V1</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SLIDE 2: TL;DR ========== -->
-  <section class="slide">
-    <div class="top-bar">
-      <span class="label">The thesis · in one page</span>
-      <span>02 / 09</span>
-    </div>
-
-    <h2>Five chassis. One has actually <em>been tested</em>.</h2>
-    <hr class="rule">
-
-    <div class="two-col-asym" style="margin-top: 16px;">
+    <div class="two-col-asym" style="gap: 56px;">
       <div>
-        <p style="font-size: 17px; line-height: 1.55;">
-          <strong>Royco Dawn</strong> and <strong>Strata</strong> are pure two-tranche chassis (Senior / Junior) layered on top of any underlying yield source.
-        </p>
-        <p style="font-size: 17px; line-height: 1.55;">
-          <strong>Infinifi</strong> is a stablecoin issuer with a three-tier deposit waterfall that mimics fractional-reserve banking.
-        </p>
-        <p style="font-size: 17px; line-height: 1.55;">
-          <strong>Covenant</strong> doesn't use the word "tranche" – it issues two ERC-20s per market (Yield Coin / Leverage Coin) – but the economics (residual absorbs first, debt absorbs second) are equivalent.
-        </p>
-        <p style="font-size: 17px; line-height: 1.55;">
-          <strong>Goldfinch V1</strong> is a per-loan Senior/Junior chassis applied to real-world private credit – each Borrower Pool tranched at origination, with a passive Senior Pool (FIDU) levering Backer first-loss capital ~4×.
-        </p>
+        <h4 style="margin-bottom: 14px;">The eight chassis</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14.5px; line-height: 1.5;">
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Royco Dawn</strong> · pure two-tranche wrapper (Senior / Junior)</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Strata</strong> · pure two-tranche wrapper (Senior / Junior)</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Infinifi</strong> · stablecoin issuer with three-tier deposit waterfall</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Covenant</strong> · two ERC-20s per market (Yield Coin / Leverage Coin)</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Knox Finance</strong> · fixed-maturity three-tier (Senior / Spectrum / Junior)</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Lotus Protocol</strong> · tranched <em>lending</em>, WTGXX-backed Senior <span class="prelaunch-badge">Pre-launch</span></li>
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Mezzanine</strong> · managed tranched stablecoin yield <span class="prelaunch-badge">Pre-launch</span></li>
+          <li style="padding: 10px 0;"><strong>Goldfinch V1</strong> · per-loan Senior/Junior on real-world private credit</li>
+        </ul>
       </div>
 
       <div>
-        <div class="callout">
-          <h4>The only proof point</h4>
-          <p style="font-size: 18px; font-family: 'Fraunces', serif; line-height: 1.3; margin: 4px 0 12px;">
-            Goldfinch is the only one of the five with <span class="hl">documented real-world Junior loss absorption</span>.
-          </p>
-          <p style="font-size: 13px; color: var(--ink); margin: 0;">
-            The other four are too new and operate on collateral profiles that haven't (publicly) generated a default that tested the waterfall.
-          </p>
-        </div>
-
-        <div style="margin-top: 32px;">
-          <h4>At a glance</h4>
-          <div style="font-family: 'Fraunces', serif; font-size: 84px; line-height: 1; letter-spacing: -0.025em; color: var(--accent); margin: 4px 0 8px;">~$17.9M</div>
-          <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--label); font-weight: 500; margin-bottom: 20px;">Total writedown – the only proof point in the set</div>
+        <div class="proof-headline" style="margin-top: 0;">
+          <span class="battle-label">The only proof point</span>
+          <div class="battle-figure"><span class="num">$17.9M</span> in real Junior losses absorbed</div>
+          <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--label); font-weight: 500; margin-bottom: 18px;">1 of 8 chassis · 3 documented defaults</div>
           <div style="border-top: 1px solid var(--rule); padding-top: 16px; font-family: 'Fraunces', serif; font-size: 17px; line-height: 1.5; color: var(--ink);">
-            Across <strong style="color: var(--accent); font-weight: 500;">3 documented defaults</strong> within Goldfinch V1, the only one of <strong style="color: var(--accent); font-weight: 500;">5 evaluated chassis</strong> with real-world junior loss absorption.
+            <strong style="color: var(--accent); font-weight: 500;">Goldfinch V1</strong> is the only one of the eight with documented real-world Junior loss absorption. The other seven are too new (or pre-launch) and operate on collateral profiles that haven't (publicly) generated a default that tested the waterfall.
           </div>
         </div>
       </div>
     </div>
 
-    <div class="footer">
-      <span>Yield Tranching · Insurance Vault</span>
-      <span>02 / 09</span>
+    <div class="cover-meta" style="margin-top: 40px;">
+      <div class="col">
+        <h4>Prepared by</h4>
+        <p><a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent);">Mike Blank</a> · May 2026</p>
+      </div>
+      <div class="col" style="text-align: right;">
+        <h4>Read time</h4>
+        <p>12 slides · ~11 min · slide 02 makes the case against looping</p>
+      </div>
     </div>
   </section>
 
-  <!-- ========== SLIDE 3: COMPARISON MATRIX ========== -->
+  <!-- ========== SLIDE 2: WHY TRANCHING ========== -->
   <section class="slide">
-    <div class="top-bar">
-      <span class="label">The landscape · side by side</span>
-      <span>03 / 09</span>
+    <div class="top-bar" data-slide="02 / 12">
+      <span class="label">Why tranching · the case against looping</span>
+    </div>
+
+    <h2>Looping screws everyone <em>the same</em>. Tranching lets you <em>choose your pain</em>.</h2>
+    <hr class="rule">
+
+    <div class="two-col" style="margin-top: 16px;">
+      <div>
+        <h4>The looping trap</h4>
+        <ul style="font-size: 14.5px; line-height: 1.6; padding-left: 18px;">
+          <li><strong>One risk profile for the whole vault.</strong> Looping stacks leverage on the same yield source – every depositor ends up holding the loop, whether they wanted that risk or not.</li>
+          <li><strong>Yield comes from leverage, not underwriting.</strong> Loss is <em>socialized</em>: at typical 5–10× loop factors, a 5% hit on the underlying becomes a 25–50% hit on every depositor equally.</li>
+          <li><strong>Reflexive in stress.</strong> Collateral drops <em>or</em> borrow rates spike → loops unwind → forced selling and exit-queue stress → collateral drops further. The wstETH:ETH unwind on Aave (Jul 2025) ran this script in days – staking exit queues hit 9–18 days while spot stETH depegged.</li>
+          <li><strong>Phantom TVL hides insolvency.</strong> Recursive collateral inflates headline TVL beyond the underwriting that backs it. Stream Finance's xUSD/deUSD loops printed ~3.25× phantom TVL until a Balancer V2 rounding exploit (Nov 2025) detonated ~$285M of cross-protocol bad debt across Euler and Morpho.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>What tranching changes</h4>
+        <ul style="font-size: 14.5px; line-height: 1.6; padding-left: 18px;">
+          <li><strong>Two contractual loss positions on the same underlying.</strong> Junior absorbs the first dollar; Senior is protected up to a defined cushion.</li>
+          <li><strong>Yield is priced against the position, not the leverage.</strong> Junior earns a risk premium for absorbing volatility; Senior earns a capped, protected coupon.</li>
+          <li><strong>Loss is <span class="hl">ranked, not socialized</span>.</strong> A 5% drawdown that hits a loop's depositors equally instead burns Junior's buffer while leaving Senior whole.</li>
+          <li><strong>Scale comes from underwriting, not leverage.</strong> The constraint moves from "how much can we lever" to "how much first-loss capital can we attract" – a fundamentally different question.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 32px;">
+      <h4>The punchline</h4>
+      <p style="font-size: 18px; font-family: 'Fraunces', serif; line-height: 1.4; margin: 4px 0 0;">
+        Looping makes yield by adding risk to <em>everyone</em>. Tranching makes yield by giving risk to <em>someone who wants it</em>.
+      </p>
+    </div>
+
+    <div class="callout" style="margin-top: 18px;">
+      <span class="label" style="color: var(--accent); display: block; margin-bottom: 10px;">The counterpoint · May 2026</span>
+      <p style="font-size: 18px; font-family: 'Fraunces', serif; line-height: 1.4; margin: 0 0 14px;">
+        Tranching only delivers ranked-loss as advertised when the underlying is <em>predictable</em>. Over an actively managed vault, the senior tranche is mostly <span class="hl">a leveraged bet on the curator</span>.
+      </p>
+      <ul style="font-size: 14.5px; line-height: 1.6; padding-left: 18px; margin: 0 0 12px;">
+        <li><strong>Manager discretion eats the waterfall.</strong> Idiosyncratic execution risk, strategy drift, and key-person bets can't be subordinated away.</li>
+        <li><strong>Utilization-based buffers are procyclical.</strong> Senior coverage scales with current junior capital – in stress, junior capital depletes or refuses to participate, and the insurance disappears precisely when seniors need it.</li>
+        <li><strong>Subordination doesn't cover oracle or contract risk.</strong> Ranked loss only governs the <em>economic</em> waterfall. A bad price feed, a reentrancy bug, or a rounding error hits Senior and Junior pari passu.</li>
+        <li><strong>DeFi tails are binary.</strong> Exploits and opsec failures are typically unrecoverable – Balancer V2's Nov 2025 rounding bug (~$128M) is the recent example – and total wipeouts make subordination notional, not real.</li>
+      </ul>
+      <p style="font-size: 14.5px; line-height: 1.55; margin: 0 0 10px; color: var(--ink);">
+        <strong>Where it does work:</strong> predictable, non-discretionary cash flow – HyperLiquid's HLP fee stream, BarnBridge-style fixed-maturity tranches – is the right canvas.
+      </p>
+      <p style="font-size: 12px; color: var(--muted); margin: 0;">
+        Source: <a href="https://x.com/0scaronchain/status/2054911737749483665" target="_blank" rel="noopener noreferrer" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent);">@0scaronchain, May 14, 2026</a>
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>02 / 12</span>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 4: HOW IT WORKS · ROYCO WORKED EXAMPLE ========== -->
+  <section class="slide">
+    <div class="top-bar" data-slide="03 / 12">
+      <span class="label">How it works in practice · Royco as a worked example</span>
+    </div>
+
+    <h2>$100 in. <em>Split.</em> Stacked. Then hit by a <em>loss</em>.</h2>
+    <hr class="rule">
+
+    <div class="two-col" style="margin-top: 16px;">
+      <div>
+        <h4>The structural flow</h4>
+        <div class="waterfall" style="margin-top: 8px;">
+          <div class="tier">
+            <div>
+              <div class="tier-name">01 · Deposit</div>
+              <div style="font-size: 12px; color: var(--muted);">$100 USDC enters the Royco vault.</div>
+            </div>
+          </div>
+          <div class="tier senior">
+            <div>
+              <div class="tier-name">02 · Split into Senior + Junior</div>
+              <div style="font-size: 12px; color: var(--muted);">~$70 → srRoyUSDC (Senior, downside-protected) · ~$30 → Junior tranche (first-loss). Ratio set by the utilization curve.</div>
+            </div>
+          </div>
+          <div class="tier mid">
+            <div>
+              <div class="tier-name">03 · Yield routing</div>
+              <div style="font-size: 12px; color: var(--muted);">Underlying earns ~8% APY. Dynamic curve reweights toward whichever tranche is scarce – Junior gets more when first-loss capital is undersupplied.</div>
+            </div>
+          </div>
+          <div class="tier junior">
+            <div>
+              <div class="tier-name">04 · Loss waterfall</div>
+              <div style="font-size: 12px; color: var(--muted);">Every dollar of loss hits Junior from $1. Senior only takes a haircut after Junior is fully exhausted.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4>Before / after a 30% loss · $100 deposit</h4>
+        <div class="stack-pair">
+          <div class="stack">
+            <div class="stack-label">Day 0</div>
+            <div class="bar senior" style="height: 70%;"><span>Senior</span><span class="amt">$70</span></div>
+            <div class="bar junior" style="height: 30%;"><span>Junior</span><span class="amt">$30</span></div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="stack">
+            <div class="stack-label">After −30% ($30)</div>
+            <div class="bar senior" style="height: 70%;"><span>Senior</span><span class="amt">$70</span></div>
+            <div class="bar wiped" style="height: 30%;"><span>Junior · wiped</span><span class="amt">$0</span></div>
+          </div>
+        </div>
+        <p style="font-size: 11.5px; color: var(--muted); margin: 16px 0 12px;">
+          Junior absorbs every dollar of loss until exhausted. Senior is untouched up to the subordination boundary.
+        </p>
+
+        <h4 style="margin-top: 20px;">$100 across five states · illustrative</h4>
+        <table class="defaults">
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Junior</th>
+              <th>Senior</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Day 0</td>
+              <td>$30</td>
+              <td>$70</td>
+              <td>Pool initialized</td>
+            </tr>
+            <tr>
+              <td>+8% underlying yield</td>
+              <td>+~$4.50 (~15% APY)</td>
+              <td>+~$3.50 (~5% APY)</td>
+              <td>Junior captures the risk premium</td>
+            </tr>
+            <tr class="loss-row">
+              <td>−5% loss event ($5)</td>
+              <td>$25</td>
+              <td>$70</td>
+              <td>Junior absorbs all of it</td>
+            </tr>
+            <tr class="loss-row">
+              <td>−30% loss event ($30)</td>
+              <td>$0 – wiped</td>
+              <td>$70</td>
+              <td>Junior exhausted; Senior at boundary</td>
+            </tr>
+            <tr class="loss-row total">
+              <td>−40% loss event ($40)</td>
+              <td>$0</td>
+              <td>$60 (−14%)</td>
+              <td>Senior begins to bleed</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 11.5px; color: var(--muted); margin-top: 8px;">
+          *Illustrative figures; actual srRoyUSDC ratios and APYs vary by vault and utilization. Royco's observation-period mechanic means transient mark-to-market dips don't trigger Junior loss recognition – only <em>persistent</em> declines count.
+        </p>
+
+        <div class="callout" style="margin-top: 20px;">
+          <h4>The point</h4>
+          <p style="font-size: 15px; font-family: 'Fraunces', serif; line-height: 1.4; margin: 4px 0 0;">
+            Same underlying yield. Same dollar of loss. <span class="hl">Two completely different outcomes per dollar of capital.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>03 / 12</span>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 5: COMPARISON MATRIX ========== -->
+  <section class="slide">
+    <div class="top-bar" data-slide="04 / 12">
+      <span class="label">The landscape · side by side · sorted by launch date</span>
     </div>
 
     <h2>The <em>comparison matrix</em>.</h2>
@@ -646,124 +988,135 @@
         <thead>
           <tr>
             <th>Dimension</th>
-            <th><a href="https://royco.gitbook.io/royco-dawn" target="_blank">Royco Dawn</a></th>
-            <th><a href="https://infinifi.xyz/" target="_blank">Infinifi</a></th>
-            <th><a href="https://docs.strata.markets/" target="_blank">Strata</a></th>
-            <th><a href="https://docs.covenant.finance/covenant-intro/what-is-covenant" target="_blank">Covenant</a></th>
-            <th><a href="https://www.goldfinch.finance/" target="_blank">Goldfinch V1</a></th>
+            <th><span class="proto-dot" style="background:#C44A36;"></span><a href="https://www.goldfinch.finance/" target="_blank">Goldfinch V1</a></th>
+            <th><span class="proto-dot" style="background:#7A6E4F;"></span><a href="https://royco.gitbook.io/royco-dawn" target="_blank">Royco Dawn</a></th>
+            <th><span class="proto-dot" style="background:#C99B6E;"></span><a href="https://docs.strata.markets/" target="_blank">Strata</a></th>
+            <th><span class="proto-dot" style="background:#5A5247;"></span><a href="https://docs.covenant.finance/covenant-intro/what-is-covenant" target="_blank">Covenant</a></th>
+            <th><span class="proto-dot" style="background:#1A1816;"></span><a href="https://infinifi.xyz/" target="_blank">Infinifi</a></th>
+            <th><span class="proto-dot" style="background:#6B6359;"></span><a href="https://knox.finance/" target="_blank">Knox Finance</a></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Core abstraction</td>
+            <td>Tranched private-credit lending pools</td>
             <td>Risk-tranching wrapper for any yield source</td>
-            <td>On-chain fractional-reserve stablecoin bank</td>
             <td>Generalized 2-tranche structuring chassis</td>
             <td>Permissionless leverage / credit marketplace</td>
-            <td>Tranched private-credit lending pools</td>
+            <td>On-chain fractional-reserve stablecoin bank</td>
+            <td>Fixed-maturity 3-tier structured-yield platform</td>
           </tr>
           <tr>
-            <td>Senior instrument</td>
+            <td><span class="tranche-dot senior"></span>Senior instrument</td>
+            <td>FIDU (Senior Pool LP token)</td>
             <td>Senior tranche tokens (e.g., srRoyUSDC)</td>
-            <td>iUSD (base)</td>
             <td>Senior token (e.g., srUSDe)</td>
             <td>Yield Coin ("zToken")</td>
-            <td>FIDU (Senior Pool LP token)</td>
+            <td>iUSD (base)</td>
+            <td>Senior / Fixed position (Position 01)</td>
           </tr>
           <tr>
-            <td>Junior instrument</td>
+            <td><span class="tranche-dot junior"></span>Junior instrument</td>
+            <td>Backer position per Borrower Pool</td>
             <td>Junior tranche token</td>
-            <td>siUSD (liquid stake) → liUSD (locked 1–8 wk)</td>
             <td>Junior token (e.g., jrUSDe)</td>
             <td>Leverage Coin</td>
-            <td>Backer position per Borrower Pool</td>
+            <td>siUSD (liquid stake) → liUSD (locked 1–8 wk)</td>
+            <td>Junior / Variable position (Position 03); plus a Spectrum middle tier (Position 02) – Knox is the only 3-tier chassis in the set</td>
           </tr>
           <tr>
             <td>Loss waterfall</td>
+            <td>Junior absorbs first; every payment pays Senior interest + principal before Junior</td>
             <td>Junior absorbs from $1; Senior protected first-dollar</td>
-            <td>liUSD → siUSD → iUSD</td>
             <td>Junior absorbs first, then Senior</td>
             <td>Leverage Coin wiped → Yield Coin face-value reduced <em>pro rata</em></td>
-            <td>Junior absorbs first; every payment pays Senior interest + principal before Junior</td>
+            <td>liUSD → siUSD → iUSD</td>
+            <td>Junior absorbs from $1 → Spectrum next → Senior last; enforced at maturity</td>
           </tr>
           <tr>
             <td>Senior yield source</td>
+            <td>Pro-rata share of pool interest, scaled by ~4× leverage and net of "leverage tax" subsidizing Junior</td>
             <td>Underlying yield, capped/protected</td>
-            <td>~8% APY on siUSD junior<sup>*</sup>; iUSD itself non-yield</td>
             <td>Guaranteed minimum benchmark + uncapped upside</td>
             <td>Implied funding rate from Latent Swap AMM</td>
-            <td>Pro-rata share of pool interest, scaled by ~4× leverage and net of "leverage tax" subsidizing Junior</td>
+            <td>~8% APY on siUSD junior<sup>*</sup>; iUSD itself non-yield</td>
+            <td><strong>Pre-agreed fixed APY</strong> set per pool, paid first, backed by Junior + Spectrum</td>
           </tr>
           <tr>
             <td>Junior yield source</td>
+            <td>Headline borrower interest rate + GFI rewards</td>
             <td>Underlying yield + risk premium from Senior</td>
-            <td>14–15.7% APY on liUSD; 8% on siUSD<sup>*</sup></td>
             <td>Risk premium from Senior + leveraged upside</td>
             <td>Leveraged exposure to collateral price/yield</td>
-            <td>Headline borrower interest rate + GFI rewards</td>
+            <td>14–15.7% APY on liUSD; 8% on siUSD<sup>*</sup></td>
+            <td>Uncapped residual + share of surplus above Junior hurdle (set per pool)</td>
           </tr>
           <tr>
             <td>Yield-split mechanism</td>
+            <td>Fixed leverage ratio per pool (typically ~4×)</td>
             <td>Dynamic utilization curve (Aave-style)</td>
-            <td>Fixed by tier</td>
             <td>Junior-first cascade with senior floor</td>
             <td>Market price of Yield Coin sets funding rate</td>
-            <td>Fixed leverage ratio per pool (typically ~4×)</td>
+            <td>Fixed by tier</td>
+            <td>Fixed senior coupon + capped Spectrum + Surplus Participation above caps</td>
           </tr>
           <tr>
             <td>Lockups?</td>
+            <td>Yes – Senior Pool withdrawal queue; Backer capital locked through loan term</td>
             <td>No</td>
-            <td>Yes – 1–8 weeks on liUSD</td>
             <td>No</td>
             <td>No – both tokens are fungible ERC-20s</td>
-            <td>Yes – Senior Pool withdrawal queue; Backer capital locked through loan term</td>
+            <td>Yes – 1–8 weeks on liUSD</td>
+            <td>Yes – fixed maturity per pool, set at deployment; position is ERC-20 transferable on secondary</td>
           </tr>
           <tr>
             <td>Underlying assets</td>
+            <td>Real-world private credit loans</td>
             <td>Any yield source (lending, staking, RWAs)</td>
-            <td>Aave, Pendle PTs, Ethena sUSDe, Fluid</td>
             <td>Ethena USDe; expanding to lending vaults, RWAs</td>
             <td>Any collateral asset</td>
-            <td>Real-world private credit loans</td>
+            <td>Aave, Pendle PTs, Ethena sUSDe, Fluid</td>
+            <td>Morpho, Aave, Pendle, and other ERC-4626 vaults</td>
           </tr>
           <tr>
             <td>Live products</td>
+            <td>Borrower Pools + Senior Pool (V1); Goldfinch Prime (single-tier RWA wrapper)</td>
             <td>srRoyUSDC, roywstETH, sroywstETH</td>
-            <td>iUSD / siUSD / liUSD</td>
             <td>srUSDe / jrUSDe</td>
             <td>Per-market Yield/Leverage Coin pairs; sUSDz Yield Fund</td>
-            <td>Borrower Pools + Senior Pool (V1); Goldfinch Prime (single-tier RWA wrapper)</td>
+            <td>iUSD / siUSD / liUSD</td>
+            <td>Multiple curated fixed-maturity vaults live at app.knox.finance/explore</td>
           </tr>
           <tr>
             <td>Closest TradFi analogue</td>
+            <td>Securitized loan tranches / mezzanine fund</td>
             <td>CDO / CLO senior-mezz-equity stack</td>
-            <td>Fractional-reserve bank with tiered deposits</td>
             <td>CDO sr/jr tranching</td>
             <td>Repo + total-return swap</td>
-            <td>Securitized loan tranches / mezzanine fund</td>
+            <td>Fractional-reserve bank with tiered deposits</td>
+            <td>Structured note – senior coupon + mezz w/ kicker + equity first-loss</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <p style="font-size: 11.5px; color: var(--muted); margin-top: 12px;">
-      *Infinifi yield figures captured 6 May 2026; rates are variable and update continuously on the protocol.
+      *Infinifi yield figures captured 6 May 2026; rates are variable and update continuously. Knox does not publish platform-wide reference APYs – Senior, Spectrum, and Junior parameters are set per pool at deployment; see app.knox.finance/explore for live pool terms. Lotus Protocol and Mezzanine are excluded from this comparison because they are not yet live; see slide 10 for narrative coverage.
     </p>
 
     <div class="footer">
-      <span>Yield Tranching · Insurance Vault</span>
-      <span>03 / 09</span>
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>04 / 12</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 4: ROYCO DAWN ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar">
+    <div class="top-bar protocol-bar" data-slide="05 / 12">
       <div class="protocol-badge">
         <span class="num-block">01</span>
         <span class="name-block">Royco Dawn</span>
       </div>
-      <span>04 / 09</span>
     </div>
 
     <h2>A two-tranche wrapper that sits <em>on top of</em> any yield source.</h2>
@@ -798,7 +1151,7 @@
         </div>
 
         <div class="callout" style="margin-top: 24px;">
-          <h4>Why it matters for an insurance vault</h4>
+          <h4>Why the observation period matters</h4>
           <p style="font-size: 15px; font-family: 'Fraunces', serif; line-height: 1.4; margin: 4px 0 0;">
             The observation-period logic is the single most insurance-shaped design choice in the set – it explicitly models the difference between a <em>marked</em> loss and a <em>realized</em> loss.
           </p>
@@ -807,19 +1160,18 @@
     </div>
 
     <div class="footer">
-      <span>Yield Tranching · Insurance Vault</span>
-      <span>04 / 09</span>
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>05 / 12</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 5: INFINIFI ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar">
+    <div class="top-bar protocol-bar" data-slide="06 / 12">
       <div class="protocol-badge">
         <span class="num-block">02</span>
         <span class="name-block">Infinifi</span>
       </div>
-      <span>05 / 09</span>
     </div>
 
     <h2>An onchain bank with a <em>three-tier</em> deposit waterfall.</h2>
@@ -877,19 +1229,18 @@
     </div>
 
     <div class="footer">
-      <span>Yield Tranching · Insurance Vault</span>
-      <span>05 / 09</span>
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>06 / 12</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 6: STRATA + COVENANT ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar">
+    <div class="top-bar protocol-bar" data-slide="07 / 12">
       <div class="protocol-badge">
         <span class="num-block">03 · 04</span>
         <span class="name-block">Strata & Covenant</span>
       </div>
-      <span>06 / 09</span>
     </div>
 
     <h2>The <em>purist</em> chassis, and the one that doesn't call itself one.</h2>
@@ -944,22 +1295,86 @@
     </div>
 
     <div class="footer">
-      <span>Yield Tranching · Insurance Vault</span>
-      <span>06 / 09</span>
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>07 / 12</span>
     </div>
   </section>
 
-  <!-- ========== SLIDE 7: GOLDFINCH ========== -->
+  <!-- ========== SLIDE 7: KNOX FINANCE ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar">
+    <div class="top-bar protocol-bar" data-slide="08 / 12">
       <div class="protocol-badge">
         <span class="num-block">05</span>
-        <span class="name-block">Goldfinch V1</span>
+        <span class="name-block">Knox Finance</span>
       </div>
-      <span>07 / 09</span>
     </div>
 
-    <h2>The most <em>TradFi-style</em> of the five – and the only one that's been tested.</h2>
+    <h2>A three-tier structured-yield platform with a <em>fixed senior coupon</em> and fixed maturities.</h2>
+    <hr class="rule">
+
+    <div class="two-col">
+      <div>
+        <h4>Mechanics</h4>
+        <ul style="font-size: 14.5px; line-height: 1.6; padding-left: 18px;">
+          <li><strong>Three positions, not two:</strong> <em>Senior (Position 01)</em> – pre-agreed fixed APY, paid first. <em>Spectrum (Position 02)</em> – user-selectable APY cap on a rate grid; multiple Spectrum tranches per pool, filled from lowest cap to highest. <em>Junior (Position 03)</em> – uncapped residual, first-loss from $1.</li>
+          <li><strong>Surplus Participation:</strong> when underlying performance exceeds Spectrum's caps, surplus goes to Junior first up to its hurdle, then is shared across Spectrum and Junior weighted by risk. This is the only protocol in the set with a mezz-style middle tier that earns an explicit kicker.</li>
+          <li><strong>Fixed maturities:</strong> each pool has a fixed maturity set at deployment. No early withdrawal from the pool itself, but every position is <span class="hl">minted as a transferable ERC-20</span> so secondary markets can clear early exits.</li>
+          <li><strong>Loss waterfall:</strong> Junior absorbs from $1 → Spectrum (highest-cap first) → Senior last; enforced at maturity. Per Knox's explainer, optional pool-level safeguards (operator pause, early redemption) can exist if enabled at deployment.</li>
+          <li><strong>Underlying:</strong> curated yield from Morpho, Aave, Pendle, and other ERC-4626 vaults. Knox is a fixed-income chassis on top of established protocols, not its own yield source.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Three positions</h4>
+        <div class="waterfall">
+          <div class="tier senior">
+            <div>
+              <div class="tier-name">Senior · Position 01</div>
+              <div style="font-size: 12px; color: var(--muted);">Fixed coupon · Paid first · Backed by Spectrum + Junior</div>
+            </div>
+            <span class="tier-yield">Pre-agreed fixed APY</span>
+          </div>
+          <div class="tier mid">
+            <div>
+              <div class="tier-name">Spectrum · Position 02</div>
+              <div style="font-size: 12px; color: var(--muted);">User-selectable cap on a rate grid · Surplus Participation above cap</div>
+            </div>
+            <span class="tier-yield">Capped, paid in cap order</span>
+          </div>
+          <div class="tier junior">
+            <div>
+              <div class="tier-name">Junior · Position 03</div>
+              <div style="font-size: 12px; color: var(--muted);">First-loss from $1 · Uncapped residual · Hurdle set per pool</div>
+            </div>
+            <span class="tier-yield">Uncapped residual</span>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top: 24px;">
+          <h4>Why the fixed senior coupon matters</h4>
+          <p style="font-size: 15px; font-family: 'Fraunces', serif; line-height: 1.4; margin: 4px 0 0;">
+            Knox is the only protocol in the set where Senior earns a <em>contractual fixed coupon</em>, not a capped pass-through. That is structurally the closest analogue to how an insurance vault pays predictable claims out of a subordinated capital cushion.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>08 / 12</span>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 8: GOLDFINCH ========== -->
+  <section class="slide">
+    <div class="top-bar protocol-bar" data-slide="09 / 12">
+      <div class="protocol-badge">
+        <span class="num-block">06</span>
+        <span class="name-block">Goldfinch V1</span>
+      </div>
+    </div>
+
+    <h2>The most <em>TradFi-style</em> of the eight – and the only one that's been tested.</h2>
     <hr class="rule">
 
     <p style="font-size: 14px; color: var(--muted); margin-top: 0;">
@@ -1040,19 +1455,90 @@
     </div>
 
     <div class="footer">
-      <span>Yield Tranching · Insurance Vault</span>
-      <span>07 / 09</span>
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>09 / 12</span>
     </div>
   </section>
 
-  <!-- ========== SLIDE 8: CROSS-CUTTING OBSERVATIONS ========== -->
+  <!-- ========== SLIDE 9: LOTUS + MEZZANINE ========== -->
   <section class="slide">
-    <div class="top-bar">
-      <span class="label">Cross-cutting observations</span>
-      <span>08 / 09</span>
+    <div class="top-bar protocol-bar" data-slide="10 / 12">
+      <div class="protocol-badge">
+        <span class="num-block">07 · 08</span>
+        <span class="name-block">Lotus Protocol & Mezzanine</span>
+      </div>
     </div>
 
-    <h2>Five chassis, sliced <em>five ways</em>.</h2>
+    <h2>The two newest chassis – <em>pre-launch</em> and <em>partially undisclosed</em>.</h2>
+    <hr class="rule">
+
+    <p style="font-size: 14px; color: var(--muted); margin-top: 0;">
+      <em>Excluded from the comparison matrix on slide 04 because neither is live with public on-chain data. Treatment here reflects what is publicly known as of May 2026.</em>
+    </p>
+
+    <div class="two-col" style="margin-top: 16px;">
+      <!-- LOTUS -->
+      <div>
+        <div class="protocol-grid" style="grid-template-columns: 60px 1fr; padding-top: 0; border-bottom: none;">
+          <div class="num">07</div>
+          <div class="body">
+            <h3>Lotus Protocol<span style="color: var(--accent);">.</span><span class="prelaunch-badge">Coming 2026</span></h3>
+            <p style="color: var(--label); font-size: 13px; margin-bottom: 16px;">Tranched <em>lending</em>, not tranched wrapping – with an RWA yield floor under Senior. Pre-launch (Q2 2026); pre-deposit vaults opened May 2026. Founder/CEO: David Reising (ex-Index Coop, hyETH/Morpho relaunch with Gauntlet).</p>
+
+            <ul style="font-size: 13.5px; line-height: 1.55; padding-left: 18px; margin: 0;">
+              <li><strong>Connected LLTV-ordered tranches inside one market:</strong> a market = collateral + oracle + loan asset + IR model + liquidation module; a tranche = one LLTV configuration inside it.</li>
+              <li><strong>Lower LLTV = more senior.</strong> Higher LLTV = more junior, higher rate.</li>
+              <li><strong>Loss containment:</strong> bad debt is <span class="hl">not socialized across the market</span>. Defaults from a high-LLTV tranche stay inside that tranche – senior tranches in the same market are insulated.</li>
+              <li><strong>Liquidity cascade:</strong> unused junior liquidity flows down to support senior borrowers unidirectionally – never the reverse.</li>
+              <li><strong>LotusUSD + yield floor:</strong> Senior base asset backed in part by WisdomTree's WTGXX Treasury Money Market Digital Fund. Pricing: "Base Rate + Credit Spread." The only protocol in the deck with an embedded RWA yield floor under Senior.</li>
+            </ul>
+
+            <div class="edge" style="margin-top: 20px;">
+              <span class="edge-label">Mental model</span>
+              Tick-based CLO with a money-market reserve floor – fits vault <em>reserves</em>, not capacity.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEZZANINE -->
+      <div>
+        <div class="protocol-grid" style="grid-template-columns: 60px 1fr; padding-top: 0; border-bottom: none;">
+          <div class="num">08</div>
+          <div class="body">
+            <h3>Mezzanine<span style="color: var(--accent);">.</span><span class="prelaunch-badge">Coming 2026</span></h3>
+            <p style="color: var(--label); font-size: 13px; margin-bottom: 16px;">Tranched <em>stablecoin yield</em> with active management. Newer than the rest; mechanics partially undisclosed.</p>
+
+            <ul style="font-size: 13.5px; line-height: 1.55; padding-left: 18px; margin: 0;">
+              <li><strong>Positioning:</strong> "Institutional-grade yield through a <span class="hl">tranching architecture that balances performance and protection</span>."</li>
+              <li><strong>Architecture:</strong> diversified, risk-stratified stablecoin yield with senior/junior style tranching, driven by "governance, automation, and AI-powered DeFi expertise." Non-custodial smart contracts.</li>
+              <li><strong>Team:</strong> co-founded by Stephen (<em>@phtevenstrong</em>), founder of DeFi Dojo. His public commentary on 3Jane's sUSD3/USD3 split is the closest available reference for how he thinks about loss waterfalls.</li>
+              <li><strong>Closest analogue in this deck:</strong> Infinifi's three-tier stablecoin deposit waterfall, but with active strategy management rather than fixed allocation.</li>
+              <li><strong>Not yet public:</strong> tranche token names, exact loss-waterfall ordering, lockup terms, full underlying strategy list, live TVL and APYs, and where "AI-powered" sits in the stack.</li>
+            </ul>
+
+            <div class="edge" style="margin-top: 20px;">
+              <span class="edge-label">The edge (if real)</span>
+              Active management overlay on top of tranching – maps to a vault's need to rotate yield sources without re-tranching. Hasn't shown the mechanics an underwriter could price.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>10 / 12</span>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 10: CROSS-CUTTING OBSERVATIONS ========== -->
+  <section class="slide">
+    <div class="top-bar" data-slide="11 / 12">
+      <span class="label">Cross-cutting observations</span>
+    </div>
+
+    <h2>Eight chassis, sliced <em>five ways</em>.</h2>
     <hr class="rule">
 
     <div class="obs-grid">
@@ -1063,6 +1549,9 @@
           <li><strong>Royco Dawn / Strata:</strong> Junior tranche, by design, from $1.</li>
           <li><strong>Infinifi:</strong> liUSD (locked) holders.</li>
           <li><strong>Covenant:</strong> Leverage Coin holder for that market.</li>
+          <li><strong>Knox:</strong> Junior / Position 03, from $1.</li>
+          <li><strong>Lotus:</strong> highest-LLTV tranche of the originating market – <em>not socialized</em>.</li>
+          <li><strong>Mezzanine:</strong> junior tranche per public material; token name not yet disclosed.</li>
           <li><strong>Goldfinch:</strong> Backers (Junior tranche), per Borrower Pool.</li>
         </ul>
       </div>
@@ -1075,7 +1564,10 @@
           <li><strong>Strata:</strong> junior-first cascade with senior floor.</li>
           <li><strong>Infinifi:</strong> protocol-set per tier.</li>
           <li><strong>Covenant:</strong> open market (Yield Coin price → implied rate).</li>
-          <li><strong>Goldfinch:</strong> fixed leverage ratio per pool (~4×) – neither algorithmic nor market-driven.</li>
+          <li><strong>Knox:</strong> fixed senior coupon + Spectrum cap + Surplus Participation above caps.</li>
+          <li><strong>Lotus:</strong> LLTV-determined rate per tranche; demand-driven within each tranche.</li>
+          <li><strong>Mezzanine:</strong> active management – governance + automation set the allocation.</li>
+          <li><strong>Goldfinch:</strong> fixed leverage ratio per pool (~4×).</li>
         </ul>
       </div>
 
@@ -1086,6 +1578,9 @@
           <li><strong>Strata / Royco Dawn:</strong> wrappers over arbitrary yield sources.</li>
           <li><strong>Infinifi:</strong> purpose-built as a stablecoin issuer.</li>
           <li><strong>Covenant:</strong> per-collateral leverage marketplace.</li>
+          <li><strong>Knox:</strong> fixed-maturity structured-yield wrapper on top of curated DeFi protocols.</li>
+          <li><strong>Lotus:</strong> tranching <em>inside</em> a lending market – not a wrapper.</li>
+          <li><strong>Mezzanine:</strong> managed stablecoin-yield mezz strategy.</li>
           <li><strong>Goldfinch:</strong> purpose-built for real-world private credit underwriting.</li>
         </ul>
       </div>
@@ -1094,8 +1589,10 @@
         <div class="obs-num">04</div>
         <h3>Liquid vs. locked</h3>
         <ul>
-          <li><strong>Fully liquid:</strong> Royco Dawn, Strata, Covenant.</li>
+          <li><strong>Fully liquid:</strong> Royco Dawn, Strata, Covenant, Lotus.</li>
+          <li><strong>Locked (with secondary):</strong> Knox (fixed maturities, ERC-20 transferable on secondary).</li>
           <li><strong>Locked:</strong> Infinifi (to bucket risk tiers), Goldfinch (to match loan tenor).</li>
+          <li><strong>Not yet disclosed:</strong> Mezzanine.</li>
         </ul>
       </div>
 
@@ -1104,19 +1601,21 @@
         <h3>Senior loss treatment when Junior is exhausted</h3>
         <ul style="columns: 2; column-gap: 48px;">
           <li><strong>Royco Dawn / Strata / Goldfinch:</strong> standard cascade – Senior takes losses next.</li>
-          <li><strong>Infinifi:</strong> explicit three-step waterfall.</li>
+          <li><strong>Infinifi / Knox:</strong> explicit three-step waterfall (Junior → middle tier → Senior).</li>
           <li><strong>Covenant:</strong> distinctive – pro-rata face-value haircut across all Yield Coin holders, no time priority.</li>
+          <li><strong>Lotus:</strong> distinctive – loss is <em>contained</em> within the originating LLTV tranche and does not propagate up the stack inside the same market.</li>
+          <li><strong>Mezzanine:</strong> not yet publicly disclosed.</li>
         </ul>
       </div>
     </div>
 
     <div class="footer">
-      <span>Yield Tranching · Insurance Vault</span>
-      <span>08 / 09</span>
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>11 / 12</span>
     </div>
   </section>
 
-  <!-- ========== SLIDE 9: CLOSING ========== -->
+  <!-- ========== SLIDE 11: CLOSING ========== -->
   <section class="slide closing dark">
     <div class="top-bar">
       <span class="logo" style="color: #F2EBDD;"><a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: #F2EBDD; text-decoration: none;">Mike Blank</a></span>
@@ -1126,12 +1625,16 @@
     <span class="label" style="color: var(--accent); margin-bottom: 18px;">For the insurance vault</span>
 
     <h1>
-      Goldfinch is the only chassis with <span style="background: var(--accent); color: #F2EBDD; padding: 0 8px;">documented junior loss absorption</span> – but its waterfall logic, Royco's observation-period nuance, and Infinifi's tiered-deposit structure each map onto a different piece of an insurance vault<span class="accent-dot">.</span>
+      Goldfinch took the <span style="background: var(--accent); color: #F2EBDD; padding: 0 8px;">only real hit</span>. Here's what every other chassis still has to prove<span class="accent-dot">.</span>
     </h1>
+
+    <p style="font-size: 17px; line-height: 1.55; max-width: 880px; margin-top: 24px; color: #D9D1C0;">
+      Royco's observation-period nuance, Infinifi's tiered deposits, Knox's fixed senior coupon, Lotus's LLTV-level loss containment with an RWA yield floor, and Mezzanine's active-management overlay each map onto a different piece of an insurance vault – but none has been through a documented default.
+    </p>
 
     <div class="closing-stats">
       <div class="stat-block">
-        <div class="stat-sm">5</div>
+        <div class="stat-sm">8</div>
         <p>Chassis evaluated</p>
       </div>
       <div class="stat-block">
@@ -1150,7 +1653,7 @@
 
     <div class="footer" style="border-top: 1px solid #3a342e; margin-top: 24px;">
       <span>May 2026 ·<a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Mike Blank</a></span>
-      <span>09 / 09</span>
+      <span>12 / 12</span>
     </div>
   </section>
 
