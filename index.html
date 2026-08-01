@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yield Tranching Protocols – Eight Chassis Compared</title>
-<meta name="description" content="A side-by-side comparison of eight DeFi yield tranching protocols – Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 – analyzing loss waterfalls, yield mechanics, and insurance vault fit.">
-<meta name="keywords" content="yield tranching, DeFi, structured finance, Royco Dawn, Infinifi, Strata, Covenant, Knox Finance, Lotus Protocol, Mezzanine, Goldfinch, senior tranche, junior tranche, loss waterfall, insurance vault, protocol comparison">
+<meta name="description" content="A side-by-side comparison of eight DeFi yield tranching protocols – Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 – analyzing loss waterfalls, yield mechanics, and insurance vault fit. Updated August 2026 with a postscript on Morpho Midnight.">
+<meta name="keywords" content="yield tranching, DeFi, structured finance, Royco Dawn, Infinifi, Strata, Covenant, Knox Finance, Lotus Protocol, Mezzanine, Goldfinch, Morpho Midnight, fixed-rate lending, senior tranche, junior tranche, loss waterfall, insurance vault, protocol comparison">
 <meta name="author" content="Mike Blank">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://mishablank.github.io/tranche-research/">
+<link rel="canonical" href="https://trancheprotocol.com/">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
@@ -17,8 +17,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yield Tranching Protocols – Eight Chassis Compared">
-<meta property="og:description" content="Side-by-side analysis of Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 yield tranching mechanics, loss waterfalls, and insurance vault applicability.">
-<meta property="og:url" content="https://mishablank.github.io/tranche-research/">
+<meta property="og:description" content="Side-by-side analysis of Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 yield tranching mechanics, loss waterfalls, and insurance vault applicability. Updated Aug 2026: the Morpho Midnight postscript.">
+<meta property="og:url" content="https://trancheprotocol.com/">
 <meta property="og:image" content="https://trancheprotocol.com/og.png">
 <meta property="og:image:width" content="2000">
 <meta property="og:image:height" content="1050">
@@ -26,7 +26,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yield Tranching Protocols – Eight Chassis Compared">
-<meta name="twitter:description" content="Side-by-side analysis of Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 yield tranching mechanics, loss waterfalls, and insurance vault applicability.">
+<meta name="twitter:description" content="Side-by-side analysis of Royco Dawn, Infinifi, Strata, Covenant, Knox, Lotus, Mezzanine, and Goldfinch V1 yield tranching mechanics, loss waterfalls, and insurance vault applicability. Updated Aug 2026: the Morpho Midnight postscript.">
 <meta name="twitter:image" content="https://trancheprotocol.com/og.png">
 
 <!-- Structured Data -->
@@ -42,6 +42,7 @@
     "url": "https://www.linkedin.com/in/mishablank/"
   },
   "datePublished": "2026-05-01",
+  "dateModified": "2026-08-01",
   "publisher": {
     "@type": "Organization",
     "name": "Mike Blank"
@@ -747,7 +748,7 @@
 
   <!-- ========== SLIDE 1: COVER ========== -->
   <section class="slide cover-slide">
-    <span class="label" style="color: var(--accent); margin-bottom: 14px;">Protocol Comparison Brief · May 2026</span>
+    <span class="label" style="color: var(--accent); margin-bottom: 14px;">Protocol Comparison Brief · May 2026 · Updated Aug 2026</span>
 
     <h1 class="cover" style="font-size: 76px; margin: 12px 0 22px;">Eight chassis tranche yield.<br><em>One has scars</em><span class="accent-dot">.</span></h1>
 
@@ -789,14 +790,14 @@
       </div>
       <div class="col" style="text-align: right;">
         <h4>Read time</h4>
-        <p>12 slides · ~11 min · slide 02 makes the case against looping</p>
+        <p>13 slides · ~12 min · slide 12: the Morpho Midnight postscript</p>
       </div>
     </div>
   </section>
 
   <!-- ========== SLIDE 2: WHY TRANCHING ========== -->
   <section class="slide">
-    <div class="top-bar" data-slide="02 / 12">
+    <div class="top-bar" data-slide="02 / 13">
       <span class="label">Why tranching · the case against looping</span>
     </div>
 
@@ -853,13 +854,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>02 / 12</span>
+      <span>02 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 4: HOW IT WORKS · ROYCO WORKED EXAMPLE ========== -->
   <section class="slide">
-    <div class="top-bar" data-slide="03 / 12">
+    <div class="top-bar" data-slide="03 / 13">
       <span class="label">How it works in practice · Royco as a worked example</span>
     </div>
 
@@ -974,13 +975,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>03 / 12</span>
+      <span>03 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 5: COMPARISON MATRIX ========== -->
   <section class="slide">
-    <div class="top-bar" data-slide="04 / 12">
+    <div class="top-bar" data-slide="04 / 13">
       <span class="label">The landscape · side by side · sorted by launch date</span>
     </div>
 
@@ -1110,13 +1111,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>04 / 12</span>
+      <span>04 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 4: ROYCO DAWN ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar" data-slide="05 / 12">
+    <div class="top-bar protocol-bar" data-slide="05 / 13">
       <div class="protocol-badge">
         <span class="num-block">01</span>
         <span class="name-block">Royco Dawn</span>
@@ -1165,13 +1166,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>05 / 12</span>
+      <span>05 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 5: INFINIFI ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar" data-slide="06 / 12">
+    <div class="top-bar protocol-bar" data-slide="06 / 13">
       <div class="protocol-badge">
         <span class="num-block">02</span>
         <span class="name-block">Infinifi</span>
@@ -1234,13 +1235,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>06 / 12</span>
+      <span>06 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 6: STRATA + COVENANT ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar" data-slide="07 / 12">
+    <div class="top-bar protocol-bar" data-slide="07 / 13">
       <div class="protocol-badge">
         <span class="num-block">03 · 04</span>
         <span class="name-block">Strata & Covenant</span>
@@ -1300,13 +1301,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>07 / 12</span>
+      <span>07 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 7: KNOX FINANCE ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar" data-slide="08 / 12">
+    <div class="top-bar protocol-bar" data-slide="08 / 13">
       <div class="protocol-badge">
         <span class="num-block">05</span>
         <span class="name-block">Knox Finance</span>
@@ -1365,13 +1366,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>08 / 12</span>
+      <span>08 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 8: GOLDFINCH ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar" data-slide="09 / 12">
+    <div class="top-bar protocol-bar" data-slide="09 / 13">
       <div class="protocol-badge">
         <span class="num-block">06</span>
         <span class="name-block">Goldfinch V1</span>
@@ -1460,13 +1461,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>09 / 12</span>
+      <span>09 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 9: LOTUS + MEZZANINE ========== -->
   <section class="slide">
-    <div class="top-bar protocol-bar" data-slide="10 / 12">
+    <div class="top-bar protocol-bar" data-slide="10 / 13">
       <div class="protocol-badge">
         <span class="num-block">07 · 08</span>
         <span class="name-block">Lotus Protocol & Mezzanine</span>
@@ -1532,13 +1533,13 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>10 / 12</span>
+      <span>10 / 13</span>
     </div>
   </section>
 
   <!-- ========== SLIDE 10: CROSS-CUTTING OBSERVATIONS ========== -->
   <section class="slide">
-    <div class="top-bar" data-slide="11 / 12">
+    <div class="top-bar" data-slide="11 / 13">
       <span class="label">Cross-cutting observations</span>
     </div>
 
@@ -1615,11 +1616,59 @@
 
     <div class="footer">
       <span>Yield Tranching · Protocol Comparison</span>
-      <span>11 / 12</span>
+      <span>11 / 13</span>
     </div>
   </section>
 
-  <!-- ========== SLIDE 11: CLOSING ========== -->
+  <!-- ========== SLIDE 12: POSTSCRIPT · MORPHO MIDNIGHT ========== -->
+  <section class="slide">
+    <div class="top-bar" data-slide="12 / 13">
+      <span class="label">Postscript · August 2026 · Morpho Midnight</span>
+    </div>
+
+    <h2>Midnight is not a ninth chassis. It's the <em>rate the seniors have to beat</em>.</h2>
+    <hr class="rule">
+
+    <p style="font-size: 14px; color: var(--muted); margin-top: 0;">
+      <em>Added 1 Aug 2026. On 21 July, Morpho publicly launched <a href="https://morpho.org/blog/now-live-morpho-midnight" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Midnight</a> – an offer-based protocol for fixed-rate, fixed-term credit. It has no senior/junior split and no loss waterfall, so it stays out of the matrix on slide 04. It still changes the economics of every chassis in this deck.</em>
+    </p>
+
+    <div class="two-col" style="margin-top: 16px;">
+      <div>
+        <h4>What shipped</h4>
+        <ul style="font-size: 14.5px; line-height: 1.6; padding-left: 18px;">
+          <li><strong>Fixed rate, fixed term, offer-based.</strong> Lenders and borrowers quote rates directly per isolated market; multi-market offers let liquidity sit across any number of markets without fragmentation. No AMM, no utilization curve – the order book <em>is</em> the rate model.</li>
+          <li><strong>Deliberately throttled rollout:</strong> one network (Base), one pair (cbBTC/USDC), a limited set of maturities. Roadmap: more assets and chains, auto-rolling, callbacks, secondary markets, cross-collateral, and a <span class="hl">Vault adapter</span> that connects Morpho's multi-billion-dollar vault liquidity to fixed-term paper.</li>
+          <li><strong>Traction is narrative-first, TVL-second.</strong> ~$1.9M TVL after ten days (peak ~$2.3M on 30 Jul, per DeFiLlama) – small against the ~$7.6B Morpho network it plugs into. The signal isn't the number; it's that the largest curator-vault ecosystem – the substrate Knox and others already wrap – now frames itself around <em>two</em> market structures: variable-rate open-term (Blue) and fixed-rate fixed-term (Midnight).</li>
+          <li><strong>What it fixes, and what it doesn't:</strong> Midnight removes <em>rate and term</em> uncertainty. Lenders still hold their own overcollateralized position – credit risk isn't ranked, it's collateralized. Tranching and Midnight solve different halves of "predictable yield."</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>What it changes for the eight</h4>
+        <ul style="font-size: 14.5px; line-height: 1.6; padding-left: 18px;">
+          <li><strong>Senior coupons get a public benchmark.</strong> Knox's pre-agreed fixed APY and Strata's guaranteed minimum were set per pool, by negotiation. An open offer book now quotes fixed-term USDC lending against pristine collateral – <span class="hl">the senior tranche premium has to clear against a visible market rate</span>, not a curator's estimate.</li>
+          <li><strong>Head-on competition for the senior buyer.</strong> The depositor who wants predictability can now lend fixed against overcollateralized cbBTC instead of buying downside protection over an actively managed vault. Chassis whose senior product <em>is</em> predictability (Knox, Strata's floor, Lotus's RWA-floored Senior) compete with Midnight directly.</li>
+          <li><strong>The best tranching canvas just got bigger.</strong> Slide 02's counterpoint stands: tranching works on predictable, non-discretionary cash flow. A fixed-rate, fixed-term loan book is exactly that – Midnight paper is arguably a cleaner tranching underlying than the discretionary vaults today's wrappers sit on.</li>
+          <li><strong>Watch the plumbing.</strong> When the Vault adapter lands, fixed-term exposure flows into the same ERC-4626 vaults that Royco, Strata, and Knox wrap. Fixed-maturity tranches over fixed-rate paper is the BarnBridge thesis, finally with a real term structure underneath it.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <h4>The takeaway</h4>
+      <p style="font-size: 18px; font-family: 'Fraunces', serif; line-height: 1.4; margin: 4px 0 0;">
+        Midnight doesn't replace tranching – it <em>prices the thing tranching sells</em>. Fixed rate removes rate risk; tranching ranks credit risk. The interesting chassis is the one that tranches Midnight's paper first.
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>Yield Tranching · Protocol Comparison</span>
+      <span>12 / 13</span>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 13: CLOSING ========== -->
   <section class="slide closing dark">
     <div class="top-bar">
       <span class="logo" style="color: #F2EBDD;"><a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: #F2EBDD; text-decoration: none;">Mike Blank</a></span>
@@ -1656,8 +1705,8 @@
     </div>
 
     <div class="footer" style="border-top: 1px solid #3a342e; margin-top: 24px;">
-      <span>May 2026 ·<a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Mike Blank</a></span>
-      <span>12 / 12</span>
+      <span>May 2026 · Updated Aug 2026 ·<a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Mike Blank</a></span>
+      <span>13 / 13</span>
     </div>
   </section>
 
