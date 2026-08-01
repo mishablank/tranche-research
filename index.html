@@ -767,7 +767,7 @@
           <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Knox Finance</strong> · fixed-maturity three-tier (Senior / Spectrum / Junior)</li>
           <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Lotus Protocol</strong> · tranched <em>lending</em>, WTGXX-backed Senior <span class="prelaunch-badge">Pre-launch</span></li>
           <li style="padding: 10px 0; border-bottom: 1px solid var(--rule);"><strong>Mezzanine</strong> · managed tranched stablecoin yield <span class="prelaunch-badge">Pre-launch</span></li>
-          <li style="padding: 10px 0;"><strong>Goldfinch V1</strong> · per-loan Senior/Junior on real-world private credit</li>
+          <li style="padding: 10px 0;"><strong>Goldfinch V1</strong> · per-loan Senior/Junior on real-world private credit <span class="prelaunch-badge">Wound down</span></li>
         </ul>
       </div>
 
@@ -777,7 +777,7 @@
           <div class="battle-figure"><span class="num">$17.9M</span> in real Junior losses absorbed</div>
           <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--label); font-weight: 500; margin-bottom: 18px;">1 of 8 chassis · 3 documented defaults</div>
           <div style="border-top: 1px solid var(--rule); padding-top: 16px; font-family: 'Fraunces', serif; font-size: 17px; line-height: 1.5; color: var(--ink);">
-            <strong style="color: var(--accent); font-weight: 500;">Goldfinch V1</strong> is the only one of the eight with documented real-world Junior loss absorption. The other seven are too new (or pre-launch) and operate on collateral profiles that haven't (publicly) generated a default that tested the waterfall.
+            <strong style="color: var(--accent); font-weight: 500;">Goldfinch V1</strong> is the only one of the eight with documented real-world Junior loss absorption. The other seven are too new (or pre-launch) and operate on collateral profiles that haven't (publicly) generated a default that tested the waterfall. Goldfinch wound down in June 2026, which makes this dataset final rather than a snapshot.
           </div>
         </div>
       </div>
@@ -1085,7 +1085,7 @@
           </tr>
           <tr>
             <td>Live products</td>
-            <td>Borrower Pools + Senior Pool (V1); Goldfinch Prime (single-tier RWA wrapper)</td>
+            <td>None taking new capital. Borrower Pools + Senior Pool (V1) in runoff; Prime wound down by GIP-87, Jun 2026 – protocol in maintenance mode</td>
             <td>srRoyUSDC, roywstETH, sroywstETH</td>
             <td>srUSDe / jrUSDe</td>
             <td>Per-market Yield/Leverage Coin pairs; sUSDz Yield Fund</td>
@@ -1383,7 +1383,7 @@
     <hr class="rule">
 
     <p style="font-size: 14px; color: var(--muted); margin-top: 0;">
-      <em>The data below is relevant to Goldfinch V1, not to the existing product Goldfinch Prime.</em>
+      <em>The data below describes Goldfinch V1, the sr/jr structure – not Prime, the single-tier successor, which governance voted to wind down in June 2026. Goldfinch is now in maintenance mode: this is a closed book, not a running experiment.</em>
     </p>
 
     <div class="two-col" style="margin-top: 16px;">
@@ -1398,9 +1398,15 @@
         </ul>
 
         <div class="callout" style="margin-top: 16px;">
-          <h4>Note on Prime</h4>
+          <h4>Note on Prime · wound down, June 2026</h4>
           <p style="font-size: 13px; margin: 4px 0 0;">
-            Goldfinch's newer <strong>Prime</strong> product offers diversified exposure to institutional private credit funds (Apollo, Ares, Golub) on Base – a single-tier wrapper, not the V1 sr/jr structure. V1 is what's directly comparable here; Prime represents Goldfinch's strategic pivot away from active sr/jr tranching toward a fund-of-funds model.
+            <strong>Prime</strong> was Goldfinch's single-tier wrapper over institutional private credit funds (Apollo, Ares, Golub) on Base – the pivot away from active sr/jr tranching toward a fund-of-funds model. It no longer exists. <strong>GIP-87</strong>, posted by Warbler Labs on 12 June 2026, passed on 23 June with <span class="hl">1,052,820 GFI cast 100% in favour</span> against a 250,000 quorum, winding Prime down and putting the protocol into maintenance mode.
+          </p>
+          <p style="font-size: 13px; margin: 10px 0 0;">
+            The cause was credit, not structure: ~$56M still outstanding across eight borrowers – two in default, six restructuring – on a ~$100M original book, against ~$1.63M of remaining TVL. Depositors report ~30% of principal recovered, with an estimated ~10% more over one to two years; Warbler put $7M of its own funds toward repayments. GFI trades ~99.8% below its $32.94 January 2022 high.
+          </p>
+          <p style="font-size: 13px; margin: 10px 0 0;">
+            <strong>Why the V1 data still stands.</strong> The waterfall did what it was specified to do – Backers absorbed the first ~$7.0M, in order, before Senior took a cent. What failed was underwriting the collateral, not ranking the loss. That is the distinction to carry into any insurance-vault design: tranching allocates losses, it does not prevent them.
           </p>
         </div>
       </div>
@@ -1683,6 +1689,10 @@
 
     <p style="font-size: 17px; line-height: 1.55; max-width: 880px; margin-top: 24px; color: #D9D1C0;">
       Royco's observation-period nuance, Infinifi's tiered deposits, Knox's fixed senior coupon, Lotus's LLTV-level loss containment with an RWA yield floor, and Mezzanine's active-management overlay each map onto a different piece of an insurance vault – but none has been through a documented default.
+    </p>
+
+    <p style="font-size: 17px; line-height: 1.55; max-width: 880px; margin-top: 16px; color: #D9D1C0;">
+      Goldfinch itself wound down in June 2026, and that sharpens the lesson rather than retiring it. The waterfall ranked the losses exactly as specified – Junior first, in order, before Senior. The protocol still ended, because ranking loss is not the same as avoiding it. A vault that has to pay claims needs both: a waterfall that holds <em>and</em> an underlying it can actually underwrite.
     </p>
 
     <div class="closing-stats">

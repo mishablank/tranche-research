@@ -9,7 +9,7 @@
 
 A *tranche* is French for "slice" – in structured finance, a slice of the same loan book carved out by where it sits in the loss waterfall. Junior takes the first dollar of loss and gets paid a premium for it; Senior is protected up to a defined cushion and accepts a thinner, steadier coupon. **Tranche Research** is a 13-slide research brief on the eight protocols trying to rebuild that machinery on-chain, and on the single question that separates them: *when the losses actually arrive, does the waterfall hold?*
 
-Seven of the eight have never found out. The eighth, Goldfinch V1, has – three documented defaults and ~$17.9M of writedowns, ~$7.0M of it landing on Junior exactly as designed. That asymmetry is the spine of the deck.
+Seven of the eight have never found out. The eighth, Goldfinch V1, has – three documented defaults and ~$17.9M of writedowns, ~$7.0M of it landing on Junior exactly as designed. That asymmetry is the spine of the deck. Goldfinch has since wound down – GIP-87 passed in June 2026 – which makes it a closed book rather than a running experiment, and the loss data final rather than a snapshot.
 
 Written to answer an insurance-vault design question – which chassis could actually sit under a vault that has to pay claims out of a subordinated capital cushion – and published because the side-by-side didn't exist anywhere else.
 
@@ -23,7 +23,7 @@ Written to answer an insurance-vault design question – which chassis could act
 - **The case against looping** – why one risk profile for a whole vault socializes loss, why phantom TVL hides insolvency, and what ranked loss changes. With the two 2025 worked examples: the wstETH:ETH unwind on Aave and Stream Finance's ~$285M cross-protocol blast radius.
 - **The counterpoint, stated fairly** – tranching only delivers ranked loss when the underlying is predictable. Over an actively managed vault, the senior tranche is mostly a leveraged bet on the curator. Procyclical buffers, oracle and contract risk hitting both tranches *pari passu*, and binary DeFi tails all get their own bullet.
 - **A worked example, end to end** – $100 into Royco, split ~$70/$30, run through five loss states from +8% yield down to −40%, showing where Junior is wiped and Senior starts to bleed.
-- **The only real proof point** – Goldfinch V1's three defaults (Tugende Kenya, Stratos, Lend East) broken out by pool size, total writedown, Backer capital wiped, Senior portion, and what was backstopped off-protocol.
+- **The only real proof point** – Goldfinch V1's three defaults (Tugende Kenya, Stratos, Lend East) broken out by pool size, total writedown, Backer capital wiped, Senior portion, and what was backstopped off-protocol. Plus the June 2026 GIP-87 wind-down and why it leaves the V1 tranching analysis intact: the waterfall ranked losses as specified, the underwriting behind it is what ended the protocol.
 - **Five cross-cutting lenses** – where the first dollar of loss lands, who sets the yield split, how general the chassis is, liquid vs. locked, and what happens to Senior once Junior is exhausted.
 - **An August 2026 postscript on Morpho Midnight** – why the fixed-rate launch isn't a ninth chassis but *is* the benchmark every senior coupon now has to clear against.
 
@@ -99,9 +99,10 @@ Every figure is drawn from protocol documentation, public defaults write-ups, or
 
 The Goldfinch default table is reconstructed from public documentation and the figures are approximate; it is the one dataset in the deck describing losses that actually happened, so it is flagged as approximate rather than quietly rounded.
 
+The Goldfinch wind-down figures – GIP-87's 1,052,820 GFI cast against a 250,000 quorum, ~$56M outstanding across eight borrowers, ~$1.63M remaining TVL, the ~30% depositor recovery and Warbler Labs' $7M – are from [The Defiant's coverage](https://thedefiant.io/news/defi/goldfinch-finance-winds-down-depositors-report-50m-defaults) and the DefiLlama numbers it cites, as of June 2026.
+
 ## Known gaps
 
-- **Goldfinch Prime is described as live, and it isn't any more.** Slides 04 and 09 present Prime as Goldfinch's ongoing fund-of-funds pivot. In June 2026, governance proposal GIP-87 passed unanimously to wind Prime down and put the protocol into maintenance mode, after defaults across a ~$100M loan book. The V1 tranching analysis – which is what the deck actually rests on – is unaffected, but the Prime framing needs a rewrite. This is the top open item.
 - **Mezzanine remains partly undisclosed** – tranche token names, exact waterfall ordering, lockup terms and live TVL were all unpublished as of the last revision.
 - **Lotus is still pre-launch**, so its loss-containment claims are documentation, not observed behaviour.
 
