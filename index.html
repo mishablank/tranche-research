@@ -258,6 +258,8 @@
   .cover-meta {
     display: flex;
     justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
     margin-top: 64px;
     padding-top: 24px;
     border-top: 1px solid var(--rule);
@@ -266,6 +268,7 @@
   .cover-meta .col p {
     font-family: 'Fraunces', serif;
     font-size: 18px;
+    line-height: 1.35;
     margin: 0;
   }
 
@@ -784,14 +787,11 @@
     </div>
 
     <div class="cover-meta" style="margin-top: 40px;">
-      <div class="col">
-        <h4>Prepared by</h4>
-        <p><a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent);">Mike Blank</a> · May 2026</p>
-      </div>
-      <div class="col" style="text-align: right;">
-        <h4>Read time</h4>
-        <p>13 slides · ~12 min · slide 12: the Morpho Midnight postscript</p>
-      </div>
+      <div class="col"><h4>Author</h4><p><a href="https://www.linkedin.com/in/mishablank/" target="_blank" rel="noopener" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent);">Mike Blank</a></p></div>
+      <div class="col"><h4>As of</h4><p>May 2026 · rev. 1 Aug</p></div>
+      <div class="col"><h4>Sources</h4><p>Protocol docs · DefiLlama</p></div>
+      <div class="col"><h4>Scope</h4><p>Tranched yield · senior / junior</p></div>
+      <div class="col"><h4>Read time</h4><p>13 slides · ~12 min</p></div>
     </div>
   </section>
 
