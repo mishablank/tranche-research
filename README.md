@@ -1,4 +1,4 @@
-# Tranche Research
+# Tranche Protocols Research
 
 > **Eight DeFi yield-tranching chassis, side by side. Seven untested theories. One that has actually absorbed real losses on real defaults.**
 
